@@ -1,6 +1,6 @@
 target number: find the sum of two numbers in a num list is the target number:
 1. Using two for loop: O($N^2$)
-2. Using heap: O(1):
+2. Using hash table: O(1):
 ```
 class Solution {
 public:
