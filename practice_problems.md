@@ -20,6 +20,9 @@ public:
 [LeeCode](https://leetcode.cn/problems/two-sum/solutions/434597/liang-shu-zhi-he-by-leetcode-solution/)
 
 
+
+## Greedy Algorithm:
+
 给定一个长度为 `n` 的 `0` 索引整数数组 `nums`。初始位置为 `nums[0]`。
 
 每个元素 `nums[i]` 表示从索引 `i` 向前跳转的最大长度。换句话说，如果你在 `nums[i]` 处，你可以跳转到任意 `nums[i + j]` 处:
@@ -52,24 +55,23 @@ public:
 };
 ```
 思路：[LeeCode](https://leetcode.cn/problems/jump-game-ii/solutions/36035/45-by-ikaruga)
+
+
 优化：
 ```
-int jump(vector<int> &nums)
+int jump(vector<int>& nums)
 {
     int ans = 0;
-    int start = 0;
-    int end = 1;
-    while (end < nums.size())
+    int end = 0;
+    int maxPos = 0;
+    for (int i = 0; i < nums.size() - 1; i++)
     {
-        int maxPos = 0;
-        for (int i = start; i < end; i++)
+        maxPos = max(nums[i] + i, maxPos);
+        if (i == end)
         {
-            // 能跳到最远的距离
-            maxPos = max(maxPos, i + nums[i]);
+            end = maxPos;
+            ans++;
         }
-        start = end;      // 下一次起跳点范围开始的格子
-        end = maxPos + 1; // 下一次起跳点范围结束的格子
-        ans++;            // 跳跃次数
     }
     return ans;
 }
@@ -78,4 +80,5 @@ int jump(vector<int> &nums)
 链接：https://leetcode.cn/problems/jump-game-ii/solutions/36035/45-by-ikaruga/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 ```
