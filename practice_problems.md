@@ -21,7 +21,7 @@ public:
 
 
 
-## Greedy Algorithm:
+### Greedy Algorithm:
 
 给定一个长度为 `n` 的 `0` 索引整数数组 `nums`。初始位置为 `nums[0]`。
 
@@ -82,3 +82,27 @@ int jump(vector<int>& nums)
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 ```
+
+## 数学
+### 阶乘后的0
+给定一个整数 `n` ，返回 `n!` 结果中尾随零的数量。
+思路：只有`2*5`会产生0，所以检查`n`中有几个`2*5`,n中5出现的次数比2少，所以仅检查5的数量
+number of $0 = n/5 + n/(5*5) + n/(5*5*5)...$
+```
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        int count = 0;
+        int interval = 5;
+        while(n >= interval)
+        {
+            count += n/interval;
+            interval *= 5;
+        }
+        return count;
+
+    }
+};
+```
+cun
+
